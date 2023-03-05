@@ -28,7 +28,20 @@ liveView.addSubview(square)
 //    square.frame = CGRect(x: 400, y: 400, width: 100, height: 100)
 //}, completion: nil)
 
-UIView.animate(withDuration: 2.0) {
+//UIView.animate(withDuration: 2.0) {
+//    square.backgroundColor = .orange
+//
+//    let scaleTransform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+//    let rotateTransform = CGAffineTransform(rotationAngle: .pi)
+//    let translateTransform = CGAffineTransform(translationX: 200, y: 200)
+//    let comboTransform = scaleTransform
+//        .concatenating(rotateTransform)
+//        .concatenating(translateTransform)
+//
+//    square.transform = comboTransform
+//}
+
+UIView.animate(withDuration: 2.0, animations: {
     square.backgroundColor = .orange
     
     let scaleTransform = CGAffineTransform(scaleX: 2.0, y: 2.0)
@@ -39,4 +52,8 @@ UIView.animate(withDuration: 2.0) {
         .concatenating(translateTransform)
     
     square.transform = comboTransform
+}) {(_) in
+    UIView.animate(withDuration: 2.0, animations: {
+        square.transform = CGAffineTransform.identity
+    })
 }
